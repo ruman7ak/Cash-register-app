@@ -5,15 +5,14 @@ const msg= document.querySelector("#error-msg");
 const numberOfnotes= document.querySelectorAll(".noofnotes");
 const availableNotes= [2000,500,100,20,10,5,1];
 
-
-
 checkbtn.addEventListener("click", function(validateBillAndCashAmt){
     hideMessage();
     if (billAmt.value > 0){
-        if(billAmt.value < cashGiven.value ){
-            const AmtToBeReturned= cashGiven.value-billAmt.value;
+        if(billAmt.value <= cashGiven.value ){
+            var AmtToBeReturned= cashGiven.value-billAmt.value;
             calculateChange(AmtToBeReturned);
-        }else{
+        }
+        else{
             showMessage("Do you wanna wash plates");
         }
     }else{
