@@ -5,22 +5,23 @@ const msg= document.querySelector("#error-msg");
 const numberOfnotes= document.querySelectorAll(".noofnotes");
 var availableNotes= [2000,500,100,20,10,5,1];
 
-checkbtn.addEventListener("click", function(validateBillAndCashAmt){
-    hideMessage();
-        if(billAmt.value<=cashGiven.value ){
-            var AmtToBeReturned= cashGiven.value-billAmt.value;
-            calculateChange(AmtToBeReturned);
-        }
-        else{
-            showMessage("Do you wanna wash plates");
-        }
-    })
+checkbtn.addEventListener("click",validateBillAndCashAmt);
 
-function calculateChange(AmtToBeReturned){
+
+function validateBillAndCashAmt(){
+    if(billAmt.value>=cashGiven.value){
+        var AmtToBeReturned= (cashGiven.value)-(billAmt.value);
+        calculateChange(AmtToBeReturned);
+        }
+    else{
+        showMessage("Do you wanna wash plates");
+        }
+    }
+
+function calculateChange(anything){
     for(i=0;i<availableNotes.length;i++){
-        var noOfNotes= Math.trunc(AmtToBeReturned/availableNotes[i]
-        );
-        AmtToBeReturned= AmtToBeReturned%availableNotes[i];
+        var noOfNotes= Math.trunc((anything/availableNotes[i]));
+        anything= anything%availableNotes[i];
         numberOfnotes[i].innerText=noOfNotes;
     }
 
