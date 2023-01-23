@@ -9,6 +9,7 @@ checkbtn.addEventListener("click",validateBillAndCashAmt);
 
 
 function validateBillAndCashAmt(){
+    hideMessage();
     if(parseFloat(billAmt.value)<= parseFloat(cashGiven.value)){
         var AmtToBeReturned= parseFloat(cashGiven.value)-parseFloat(billAmt.value);
         calculateChange(AmtToBeReturned);
